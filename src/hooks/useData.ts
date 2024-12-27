@@ -7,14 +7,14 @@ interface FetchResponse<T>{
     results: T[];
 }
 
-const useData = <T>(endpint: string)=>{
+const useData = <T>(endpoint: string)=>{
     const [data, setData] = useState<T[]>([]);
     const [error, setError] = useState('');
     const [isLoading, setLoading] = useState(true);
 
     useEffect(()=>{
         const controller = new AbortController();
-        apiClient.get<FetchResponse<T>>(endpint, {signal: controller.signal})
+        apiClient.get<FetchResponse<T>>(endpoint, {signal: controller.signal})
             .then(response => {
                 setData(response.data.results);
                 setLoading(false);
