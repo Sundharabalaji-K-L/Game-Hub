@@ -1,4 +1,4 @@
-import useData from "./useData.ts";
+import platforms from '../Data/platforms.ts'
 
 
 interface Plaform{
@@ -8,6 +8,8 @@ interface Plaform{
 }
 
 
-const usePlatforms = ()=> useData<Plaform>('/platforms/lists/parents')
+const usePlatforms = ()=> {
+    return {data: platforms, isLoading: false, error: null}
+}
 
 export default usePlatforms
